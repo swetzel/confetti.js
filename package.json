@@ -1,0 +1,38 @@
+{
+    "name": "@hiseb/confetti",
+    "version": "2.0.0",
+    "description": "A lightweight confetti browser animation",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "import": "./dist/index.mjs"
+        },
+        "./confetti.min.js": "./dist/confetti.min.js"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup && mv ./dist/confetti.global.js ./dist/confetti.min.js"
+    },
+    "keywords": [
+        "confetti",
+        "canvas",
+        "particles",
+        "animation",
+        "simulation"
+    ],
+    "author": "Sebastian Wetzel",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/swetzel/confetti.js.git"
+    },
+    "devDependencies": {
+        "tsup": "^8.5.1",
+        "typescript": "^5.9.3"
+    }
+}
