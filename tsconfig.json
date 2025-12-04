@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "commonjs",
+        "moduleResolution": "node10",
+        "outDir": "./dist",
+        "strict": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "removeComments": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["./src/**/*.ts"],
+    "exclude": ["node_modules"]
+}
