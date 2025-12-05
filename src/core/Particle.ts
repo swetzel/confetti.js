@@ -26,31 +26,26 @@ export default class Particle {
         this.fadeRate = 100 / Random.range(0.5, 2.5);
     }
 
-    initSize() {
+    private initSize(): Vector2D {
         const x = Random.range(2, 10) * this.config.size;
         const y = Random.range(2, 4) * this.config.size;
         return new Vector2D(x, y);
     }
 
-    initVelocity() {
+    private initVelocity(): Vector2D {
         const x = Random.range(-0.5, 0.5);
         const y = Random.range(-0.75, 0.25);
-        const direction = new Vector2D(x, y).normalizeInPlace();
+        const direction = new Vector2D(x, y).normalize();
         direction.x *= Math.random() * this.config.velocity;
         direction.y *= Math.random() * this.config.velocity;
         return direction;
     }
 
-    getArea() {
-        return this.size.x * this.size.y;
-    }
-
-    update(delta: number) {
+    update(delta: number): void {
         this.velocity.x += Random.range(-15, 15) * delta;
         this.velocity.y += 50 * (this.size.y / (10 * this.config.size)) * delta;
 
-        this.velocity.x *= 0.98;
-        this.velocity.y *= 0.98;
+        this.velocity.scale(0.98);
 
         this.position.x += this.velocity.x * delta;
         this.position.y += this.velocity.y * delta;
@@ -63,7 +58,7 @@ export default class Particle {
         }
     }
 
-    draw(renderer: Renderer) {
+    draw(renderer: Renderer): void {
         renderer.drawRect(
             this.position,
             this.size,

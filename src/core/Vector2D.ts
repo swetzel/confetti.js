@@ -7,7 +7,7 @@ export default class Vector2D {
         this.y = y;
     }
 
-    copy() {
+    copy(): Vector2D {
         return new Vector2D(this.x, this.y);
     }
 
@@ -16,13 +16,6 @@ export default class Vector2D {
     }
 
     normalize(): Vector2D {
-        const mag = this.magnitude();
-        if (mag === 0) return new Vector2D(0, 0);
-        const inv = 1 / mag;
-        return new Vector2D(this.x * inv, this.y * inv);
-    }
-
-    normalizeInPlace(): this {
         const mag = this.magnitude();
         if (mag === 0) {
             this.x = 0;
@@ -35,19 +28,9 @@ export default class Vector2D {
         return this;
     }
 
-    add(v: Vector2D): Vector2D {
-        return new Vector2D(this.x + v.x, this.y + v.y);
-    }
-
-    sub(v: Vector2D): Vector2D {
-        return new Vector2D(this.x - v.x, this.y - v.y);
-    }
-
     scale(s: number): Vector2D {
-        return new Vector2D(this.x * s, this.y * s);
-    }
-
-    dot(v: Vector2D): number {
-        return this.x * v.x + this.y * v.y;
+        this.x *= s;
+        this.y *= s;
+        return this;
     }
 }

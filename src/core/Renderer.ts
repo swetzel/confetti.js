@@ -38,7 +38,7 @@ export default class Renderer {
         this.context.imageSmoothingEnabled = true;
     }
 
-    private handleResize() {
+    private handleResize(): void {
         if (this.rafId) cancelAnimationFrame(this.rafId);
         this.rafId = requestAnimationFrame(() => {
             const { innerWidth, innerHeight } = window;
@@ -51,19 +51,19 @@ export default class Renderer {
         });
     }
 
-    get width() {
+    get width(): number {
         return this.canvas.width / this.dpr;
     }
 
-    get height() {
+    get height(): number {
         return this.canvas.height / this.dpr;
     }
 
-    clear() {
+    clear(): void {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    drawRect(p: Vector2D, s: Vector2D, r: number, c: number, o: number) {
+    drawRect(p: Vector2D, s: Vector2D, r: number, c: number, o: number): void {
         const rad = (r * Math.PI) / 180;
         const cos = Math.cos(rad);
         const sin = Math.sin(rad);
@@ -77,7 +77,7 @@ export default class Renderer {
         this.context.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     }
 
-    cleanup() {
+    cleanup(): void {
         window.removeEventListener("resize", this.resize);
         if (this.rafId) cancelAnimationFrame(this.rafId);
         this.canvas.remove();
