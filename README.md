@@ -22,12 +22,10 @@ You can install this library from NPM:
 npm install --save @hiseb/confetti
 ```
 
-> _Note: This is a client library intended for use in a web browser, and will not run in Node.js_
-
 Alternatively, you can include this library in your HTML page directly from a CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.1/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.2/dist/confetti.min.js"></script>
 ```
 
 ## Usage
@@ -38,7 +36,7 @@ confetti();
 ```
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.1/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.2/dist/confetti.min.js"></script>
 <script>
     confetti();
 </script>
@@ -52,7 +50,7 @@ The confetti function takes in a config object, all parameters are optional:
 confetti({
     position: { x: 0, y: 0 },   // Origin position
     count: 100,                 // Number of particles
-    size: 1;                    // Size of the particles
+    size: 1,                    // Size of the particles
     velocity: 200,              // Initial particle velocity
     fade: false,                // Particles fall off the screen, or fade out
 });
