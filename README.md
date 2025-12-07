@@ -1,6 +1,6 @@
 # [🎉 confetti.js](https://confettijs.org/)
 
-***A lightweight confetti browser animation.***
+***A lightweight confetti browser animation library.***
 
 [![jsdelivr][jsdelivr.svg]][jsdelivr.link]
 [![npm-downloads][npm-downloads.svg]][npm.link]
@@ -12,7 +12,7 @@
 [npm.link]: https://www.npmjs.com/package/@hiseb/confetti
 [npm-version.svg]: https://img.shields.io/npm/v/@hiseb/confetti.svg
 
-[![confetti](/assets/confetti.gif)](https://github.com/swetzel/confetti.js)
+![confetti](/assets/confetti.gif)
 
 ## Install
 
@@ -25,7 +25,7 @@ npm install --save @hiseb/confetti
 Alternatively, you can include this library in your HTML page directly from a CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.2/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.3/dist/confetti.min.js"></script>
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ confetti();
 ```
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.2/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.3/dist/confetti.min.js"></script>
 <script>
     confetti();
 </script>
