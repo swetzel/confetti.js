@@ -14,6 +14,7 @@ export default defineConfig([
         format: ["iife"],
         outDir: "dist",
         minify: true,
+        sourcemap: false,
         clean: true,
     },
 ]);

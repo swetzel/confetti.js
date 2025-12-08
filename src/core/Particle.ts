@@ -20,7 +20,7 @@ export default class Particle {
         this.size = this.initSize();
         this.velocity = this.initVelocity();
         this.rotation = Random.range(0, 360);
-        this.rotation_speed = Random.range(-50, 50);
+        this.rotation_speed = Random.range(-250, 250);
         this.hue = Random.range(0, 360);
         this.opacity = 100;
         this.fadeRate = 100 / Random.range(0.5, 2.5);
@@ -36,14 +36,14 @@ export default class Particle {
         const x = Random.range(-0.5, 0.5);
         const y = Random.range(-0.75, 0.25);
         const direction = new Vector2D(x, y).normalize();
-        direction.x *= Math.random() * this.config.velocity;
-        direction.y *= Math.random() * this.config.velocity;
+        direction.x *= Math.random() * this.config.velocity * 3.5;
+        direction.y *= Math.random() * this.config.velocity * 3.5;
         return direction;
     }
 
     update(delta: number): void {
-        this.velocity.x += Random.range(-15, 15) * delta;
-        this.velocity.y += 50 * (this.size.y / (10 * this.config.size)) * delta;
+        this.velocity.x += Random.range(-250, 250) * delta;
+        this.velocity.y += 750 * (this.size.y / (10 * this.config.size)) * delta;
 
         this.velocity.scale(0.98);
 
