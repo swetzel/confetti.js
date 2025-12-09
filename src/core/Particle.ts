@@ -36,8 +36,8 @@ export default class Particle {
         const x = Random.range(-0.5, 0.5);
         const y = Random.range(-0.75, 0.25);
         const direction = new Vector2D(x, y).normalize();
-        direction.x *= Math.random() * this.config.velocity * 3.75;
-        direction.y *= Math.random() * this.config.velocity * 3.75;
+        direction.x *= Math.random() * this.config.velocity * 4;
+        direction.y *= Math.random() * this.config.velocity * 4;
         return direction;
     }
 
