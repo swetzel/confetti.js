@@ -36,13 +36,13 @@ export default class Particle {
         const x = Random.range(-0.5, 0.5);
         const y = Random.range(-0.75, 0.25);
         const direction = new Vector2D(x, y).normalize();
-        direction.x *= Math.random() * this.config.velocity * 3.5;
-        direction.y *= Math.random() * this.config.velocity * 3.5;
+        direction.x *= Math.random() * this.config.velocity * 3.75;
+        direction.y *= Math.random() * this.config.velocity * 3.75;
         return direction;
     }
 
     update(delta: number): void {
-        this.velocity.x += Random.range(-250, 250) * delta;
+        this.velocity.x += Random.range(-350, 350) * delta;
         this.velocity.y += 750 * (this.size.y / (10 * this.config.size)) * delta;
 
         const damping = Math.pow(0.98, delta * 60);

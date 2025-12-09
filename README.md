@@ -25,7 +25,7 @@ npm install --save @hiseb/confetti
 Alternatively, you can include this library in your HTML page directly from a CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.7/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.8/dist/confetti.min.js"></script>
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ confetti();
 ```
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.7/dist/confetti.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.0.8/dist/confetti.min.js"></script>
 <script>
     confetti();
 </script>

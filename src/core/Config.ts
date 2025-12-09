@@ -8,7 +8,7 @@ export interface ConfettiConfig {
 
 const DEFAULT_CONFIG: ConfettiConfig = {
     position: { x: window.innerWidth / 2, y: window.innerHeight / 3 },
-    count: 100,
+    count: 75,
     size: 1,
     velocity: 200,
     fade: false,
