@@ -45,7 +45,8 @@ export default class Particle {
         this.velocity.x += Random.range(-250, 250) * delta;
         this.velocity.y += 750 * (this.size.y / (10 * this.config.size)) * delta;
 
-        this.velocity.scale(0.98);
+        const damping = Math.pow(0.98, delta * 60);
+        this.velocity.scale(damping);
 
         this.position.x += this.velocity.x * delta;
         this.position.y += this.velocity.y * delta;
