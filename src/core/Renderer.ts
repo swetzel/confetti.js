@@ -3,9 +3,10 @@ import Vector2D from "./Vector2D";
 export default class Renderer {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
+
     private dpr: number;
-    private rafId: number;;
-    private resize: () => void;
+    private rafId: number;
+    private boundResize: () => void;
 
     constructor() {
         const canvas = document.createElement("canvas");
@@ -16,12 +17,13 @@ export default class Renderer {
 
         this.canvas = canvas;
         this.context = context;
+
         this.dpr = Math.max(1, window.devicePixelRatio || 1);
         this.rafId = 0;
-        this.resize = this.handleResize.bind(this);
+        this.boundResize = this.resize.bind(this);
 
-        this.handleResize();
-        window.addEventListener("resize", this.resize);
+        this.resize();
+        window.addEventListener("resize", this.boundResize);
 
         canvas.style.position = "fixed";
         canvas.style.top = "0";
@@ -38,7 +40,7 @@ export default class Renderer {
         this.context.imageSmoothingEnabled = true;
     }
 
-    private handleResize(): void {
+    private resize(): void {
         if (this.rafId) cancelAnimationFrame(this.rafId);
         this.rafId = requestAnimationFrame(() => {
             const { innerWidth, innerHeight } = window;
@@ -69,7 +71,9 @@ export default class Renderer {
         const sin = Math.sin(rad);
         const width = s.x * this.dpr;
         const height = s.y * this.dpr;
-        this.context.setTransform(cos, sin, -sin, cos, p.x * this.dpr, p.y * this.dpr);
+        const tx = p.x * this.dpr;
+        const ty = p.y * this.dpr;
+        this.context.setTransform(cos, sin, -sin, cos, tx, ty);
         this.context.beginPath();
         this.context.rect(-width / 2, -height / 2, width, height);
         this.context.fillStyle = `oklch(0.85 0.25 ${c}deg / ${o}%)`;
@@ -78,7 +82,7 @@ export default class Renderer {
     }
 
     cleanup(): void {
-        window.removeEventListener("resize", this.resize);
+        window.removeEventListener("resize", this.boundResize);
         if (this.rafId) cancelAnimationFrame(this.rafId);
         this.canvas.remove();
     }

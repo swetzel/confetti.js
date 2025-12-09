@@ -7,9 +7,9 @@ export default class Engine {
     private particles: Particle[] = [];
     private renderer: Renderer;
 
-    private boundUpdate: (time: number) => void;
     private lastTime: number = 0;
     private rafId: number = 0;
+    private boundUpdate: (time: number) => void;
 
     private static sharedEngine: Engine | null = null;
 
