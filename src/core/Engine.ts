@@ -4,18 +4,21 @@ import Renderer from "./Renderer";
 import Vector2D from "./Vector2D";
 
 export default class Engine {
-    private particles: Particle[] = [];
     private renderer: Renderer;
+    private particles: Particle[];
 
-    private lastTime: number = 0;
-    private rafId: number = 0;
+    private lastTime: number;
+    private rafId: number;
     private boundUpdate: (time: number) => void;
 
     private static sharedEngine: Engine | null = null;
 
     private constructor() {
         this.renderer = new Renderer();
+        this.particles = [];
+
         this.boundUpdate = this.update.bind(this);
+        this.lastTime = 0;
         this.rafId = window.requestAnimationFrame(this.boundUpdate);
     }
 
