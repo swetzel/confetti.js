@@ -1,7 +1,7 @@
 {
     "name": "@hiseb/confetti",
     "version": "2.1.0",
-    "description": "A lightweight confetti browser animation",
+    "description": "A lightweight confetti browser animation library",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
