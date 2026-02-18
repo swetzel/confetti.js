@@ -1,7 +1,6 @@
 import { ConfettiConfig } from "./Config";
 import Particle from "./Particle";
 import Renderer from "./Renderer";
-import Vector2D from "./Vector2D";
 
 export default class Engine {
     private renderer: Renderer;
@@ -53,9 +52,8 @@ export default class Engine {
     }
 
     trigger(config: ConfettiConfig): void {
-        const position = new Vector2D(config.position.x, config.position.y);
         for (let i = 0; i < config.count; i++) {
-            this.particles.push(new Particle(position, config));
+            this.particles.push(new Particle(config));
         }
     }
 

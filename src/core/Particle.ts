@@ -14,9 +14,9 @@ export default class Particle {
     private opacity: number;
     private fadeRate: number;
 
-    constructor(position: Vector2D, config: ConfettiConfig) {
+    constructor(config: ConfettiConfig) {
         this.config = config;
-        this.position = position.copy();
+        this.position = this.initPosition();
         this.size = this.initSize();
         this.velocity = this.initVelocity();
         this.rotation = Random.range(0, 360);
@@ -24,6 +24,12 @@ export default class Particle {
         this.hue = Random.range(0, 360);
         this.opacity = 100;
         this.fadeRate = 100 / Random.range(0.5, 2.5);
+    }
+
+    private initPosition(): Vector2D {
+        const x = this.config.position.x;
+        const y = this.config.position.y;
+        return new Vector2D(x, y);
     }
 
     private initSize(): Vector2D {
