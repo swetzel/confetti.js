@@ -1,2 +1,9 @@
 import confetti from "./index";
-(window as any).confetti = confetti;
+
+declare global {
+    interface Window {
+        confetti: typeof confetti;
+    }
+}
+
+window.confetti = confetti;
