@@ -16,7 +16,8 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsup && mv ./dist/confetti.global.js ./dist/confetti.min.js"
+        "build": "tsup && mv ./dist/confetti.global.js ./dist/confetti.min.js",
+        "test": "vitest run"
     },
     "keywords": [
         "confetti",
@@ -32,7 +33,9 @@
         "url": "git+https://github.com/swetzel/confetti.js.git"
     },
     "devDependencies": {
+        "jsdom": "^28.1.0",
         "tsup": "^8.5.1",
-        "typescript": "^5.9.3"
+        "typescript": "^5.9.3",
+        "vitest": "^4.0.18"
     }
 }
