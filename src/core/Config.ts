@@ -6,8 +6,7 @@ export interface ConfettiConfig {
     fade: boolean;
 }
 
-const DEFAULT_CONFIG: ConfettiConfig = {
-    position: { x: window.innerWidth / 2, y: window.innerHeight / 3 },
+const DEFAULT_CONFIG = {
     count: 75,
     size: 1,
     velocity: 200,
@@ -16,6 +15,10 @@ const DEFAULT_CONFIG: ConfettiConfig = {
 
 export default class Config {
     static init(config: Partial<ConfettiConfig>): ConfettiConfig {
-        return { ...DEFAULT_CONFIG, ...config };
+        return {
+            position: { x: window.innerWidth / 2, y: window.innerHeight / 3 },
+            ...DEFAULT_CONFIG,
+            ...config,
+        };
     }
 }

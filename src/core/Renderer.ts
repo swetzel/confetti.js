@@ -49,6 +49,7 @@ export default class Renderer {
             this.canvas.style.width = `${innerWidth}px`;
             this.canvas.style.height = `${innerHeight}px`;
             this.context.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+            this.context.imageSmoothingEnabled = true;
             this.rafId = 0;
         });
     }

@@ -22,7 +22,7 @@ export default class Engine {
     }
 
     private update(time: number): void {
-        const delta = Math.min((time - this.lastTime) / 1000, 0.064);
+        const delta = this.lastTime ? Math.min((time - this.lastTime) / 1000, 0.064) : 0;
         this.lastTime = time;
 
         if (this.particles.length === 0) {

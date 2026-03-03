@@ -9,7 +9,7 @@ export default class Particle {
     private size: Vector2D;
     private velocity: Vector2D;
     private rotation: number;
-    private rotation_speed: number;
+    private rotationSpeed: number;
     private hue: number;
     private opacity: number;
     private fadeRate: number;
@@ -20,7 +20,7 @@ export default class Particle {
         this.size = this.initSize();
         this.velocity = this.initVelocity();
         this.rotation = Random.range(0, 360);
-        this.rotation_speed = Random.range(-250, 250);
+        this.rotationSpeed = Random.range(-250, 250);
         this.hue = Random.range(0, 360);
         this.opacity = 100;
         this.fadeRate = 100 / Random.range(0.5, 2.5);
@@ -42,8 +42,8 @@ export default class Particle {
         const x = Random.range(-0.5, 0.5);
         const y = Random.range(-0.75, 0.25);
         const direction = new Vector2D(x, y).normalize();
-        direction.x *= Math.random() * this.config.velocity * 4;
-        direction.y *= Math.random() * this.config.velocity * 4;
+        direction.x *= Random.range(0, this.config.velocity * 4);
+        direction.y *= Random.range(0, this.config.velocity * 4);
         return direction;
     }
 
@@ -57,7 +57,7 @@ export default class Particle {
         this.position.x += this.velocity.x * delta;
         this.position.y += this.velocity.y * delta;
 
-        this.rotation += this.rotation_speed * delta;
+        this.rotation += this.rotationSpeed * delta;
 
         if (this.config.fade) {
             this.opacity -= this.fadeRate * delta;
@@ -75,7 +75,7 @@ export default class Particle {
         );
     }
 
-    cull(renderer: Renderer) {
+    cull(renderer: Renderer): boolean {
         const padding = Math.max(this.size.x, this.size.y) * 2;
         const offScreen = this.position.y > renderer.height + padding;
         return offScreen || this.opacity <= 0;
