@@ -21,7 +21,12 @@ export default class Particle {
         this.velocity = this.initVelocity();
         this.rotation = Random.range(0, 360);
         this.rotationSpeed = Random.range(-250, 250);
-        this.hue = Random.range(0, 360);
+        
+        const hasColors = config.colors && config.colors.length > 0;
+        this.hue = hasColors 
+            ? config.colors[Math.floor(Math.random() * config.colors.length)]
+            : Random.range(0, 360);
+        
         this.opacity = 100;
         this.fadeRate = 100 / Random.range(0.5, 2.5);
     }

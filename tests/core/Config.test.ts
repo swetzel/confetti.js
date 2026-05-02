@@ -44,5 +44,15 @@ describe('Config', () => {
                 expect(config[key]).toBeDefined();
             }
         });
+
+        it('accepts colors option', () => {
+            const config = Config.init({ colors: [0, 120, 240] });
+            expect(config.colors).toEqual([0, 120, 240]);
+        });
+
+        it('colors is undefined when not provided', () => {
+            const config = Config.init({});
+            expect(config.colors).toBeUndefined();
+        });
     });
 });
