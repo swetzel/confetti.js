@@ -53,6 +53,7 @@ confetti({
     size: 1,                    // Size of the particles
     velocity: 200,              // Initial particle velocity
     fade: false,                // Particles fall off the screen, or fade out
+    colors: [0, 120, 240],     // Array of hue values (0-360) for particle colors
 });
 ```
 

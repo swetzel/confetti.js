@@ -90,11 +90,35 @@ describe('Particle', () => {
             p.update(1);
             // opacity went from 100 to 60 → still on screen at y=300 with renderer height=600
             // but opacity is not 100 anymore, meaning fade is happening
-            // After 3 updates opacity hits 0 → cull returns true
+            // After3 updates opacity hits 0 → cull returns true
             p.update(1);
             p.update(1);
             expect(p.cull(mockRenderer(600))).toBe(true);
             vi.restoreAllMocks();
+        });
+    });
+
+    describe('colors', () => {
+        it('uses hue from colors array when provided', () => {
+            const colors = [0, 120, 240];
+            const config = Config.init({ position: { x: 500, y: 300 }, colors });
+            const renderer = mockRenderer(600);
+            const particles = Array.from({ length: 50 }, () => new Particle(config));
+            particles.forEach(p => p.draw(renderer));
+            const hues = renderer.drawRect.mock.calls.map(call => call[3]);
+            hues.forEach(hue => {
+                expect(colors).toContain(hue);
+            });
+        });
+
+        it('uses random hue when colors is not provided', () => {
+            const config = Config.init({ position: { x: 500, y: 300 } });
+            const renderer = mockRenderer(600);
+            const particle = new Particle(config);
+            particle.draw(renderer);
+            const hue = renderer.drawRect.mock.calls[0][3];
+            expect(hue).toBeGreaterThanOrEqual(0);
+            expect(hue).toBeLessThanOrEqual(360);
         });
     });
 });
