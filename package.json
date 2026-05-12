@@ -16,7 +16,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsup && mv ./dist/confetti.global.js ./dist/confetti.min.js",
+        "build": "tsup",
         "test": "vitest run"
     },
     "keywords": [

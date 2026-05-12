@@ -15,6 +15,7 @@ export default defineConfig([
         outDir: "dist",
         minify: true,
         sourcemap: false,
-        clean: true,
+        clean: false,
+        outExtension: () => ({ js: ".min.js" }),
     },
 ]);
