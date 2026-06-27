@@ -66,7 +66,7 @@ export default class Renderer {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    drawRect(p: Vector2D, s: Vector2D, r: number, c: number, o: number): void {
+    drawRect(p: Vector2D, s: Vector2D, r: number, c: number, o: number, baseColor?: string): void {
         const rad = (r * Math.PI) / 180;
         const cos = Math.cos(rad);
         const sin = Math.sin(rad);
@@ -77,7 +77,11 @@ export default class Renderer {
         this.context.setTransform(cos, sin, -sin, cos, tx, ty);
         this.context.beginPath();
         this.context.rect(-width / 2, -height / 2, width, height);
-        this.context.fillStyle = `oklch(0.85 0.25 ${c}deg / ${o}%)`;
+        if (baseColor) {
+            this.context.fillStyle = `oklch(from ${baseColor} l c h / ${o}%)`;
+        } else {
+            this.context.fillStyle = `oklch(0.85 0.25 ${c}deg / ${o}%)`;
+        }
         this.context.fill();
         this.context.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     }

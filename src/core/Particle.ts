@@ -13,6 +13,7 @@ export default class Particle {
     private hue: number;
     private opacity: number;
     private fadeRate: number;
+    private baseColor?: string;
 
     constructor(config: ConfettiConfig) {
         this.config = config;
@@ -24,6 +25,7 @@ export default class Particle {
         this.hue = Random.range(0, 360);
         this.opacity = 100;
         this.fadeRate = 100 / Random.range(0.5, 2.5);
+        this.baseColor = config.baseColor;
     }
 
     private initPosition(): Vector2D {
@@ -71,7 +73,8 @@ export default class Particle {
             this.size,
             this.rotation,
             this.hue,
-            this.opacity
+            this.opacity,
+            this.baseColor
         );
     }
 

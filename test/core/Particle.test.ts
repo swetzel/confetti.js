@@ -97,4 +97,32 @@ describe('Particle', () => {
             vi.restoreAllMocks();
         });
     });
+
+    describe('draw()', () => {
+        it('calls renderer.drawRect with hue when baseColor is not specified', () => {
+            const config = Config.init({ position: { x: 500, y: 300 } });
+            const p = new Particle(config);
+            const renderer = mockRenderer(600);
+            
+            p.draw(renderer);
+            
+            expect(renderer.drawRect).toHaveBeenCalledOnce();
+            // Check that baseColor argument is undefined (last argument)
+            const lastCall = (renderer.drawRect as any).mock.calls[0];
+            expect(lastCall[5]).toBeUndefined();
+        });
+
+        it('calls renderer.drawRect with baseColor when specified', () => {
+            const config = Config.init({ position: { x: 500, y: 300 }, baseColor: '#ff0000' });
+            const p = new Particle(config);
+            const renderer = mockRenderer(600);
+            
+            p.draw(renderer);
+            
+            expect(renderer.drawRect).toHaveBeenCalledOnce();
+            // Check that baseColor argument is passed (last argument)
+            const lastCall = (renderer.drawRect as any).mock.calls[0];
+            expect(lastCall[5]).toBe('#ff0000');
+        });
+    });
 });

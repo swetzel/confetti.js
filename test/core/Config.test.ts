@@ -44,5 +44,25 @@ describe('Config', () => {
                 expect(config[key]).toBeDefined();
             }
         });
+
+        it('accepts baseColor as a hex value', () => {
+            const config = Config.init({ baseColor: '#ff0000' });
+            expect(config.baseColor).toBe('#ff0000');
+        });
+
+        it('accepts baseColor as an rgb value', () => {
+            const config = Config.init({ baseColor: 'rgb(255, 0, 0)' });
+            expect(config.baseColor).toBe('rgb(255, 0, 0)');
+        });
+
+        it('accepts baseColor as an hsl value', () => {
+            const config = Config.init({ baseColor: 'hsl(0, 100%, 50%)' });
+            expect(config.baseColor).toBe('hsl(0, 100%, 50%)');
+        });
+
+        it('baseColor is undefined when not specified', () => {
+            const config = Config.init({});
+            expect(config.baseColor).toBeUndefined();
+        });
     });
 });
