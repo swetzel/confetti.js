@@ -10,7 +10,7 @@ export default class Particle {
     private velocity: Vector2D;
     private rotation: number;
     private rotationSpeed: number;
-    private hue: number;
+    private color: string | number;
     private opacity: number;
     private fadeRate: number;
 
@@ -21,7 +21,7 @@ export default class Particle {
         this.velocity = this.initVelocity();
         this.rotation = Random.range(0, 360);
         this.rotationSpeed = Random.range(-250, 250);
-        this.hue = Random.range(0, 360);
+        this.color = this.initColor();
         this.opacity = 100;
         this.fadeRate = 100 / Random.range(0.5, 2.5);
     }
@@ -47,6 +47,15 @@ export default class Particle {
         return direction;
     }
 
+    private initColor(): string | number {
+        if (this.config.color && this.config.color.length > 0) {
+            const index = Math.floor(Random.range(0, this.config.color.length));
+            return this.config.color[index];
+        } else {
+            return Random.range(0, 360);
+        }
+    }
+
     update(delta: number, damping: number): void {
         this.velocity.x += Random.range(-350, 350) * delta;
         this.velocity.y += 75 * this.size.y * delta;
@@ -69,7 +78,7 @@ export default class Particle {
             this.position,
             this.size,
             this.rotation,
-            this.hue,
+            this.color,
             this.opacity
         );
     }

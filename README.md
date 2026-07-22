@@ -53,6 +53,7 @@ confetti({
     size: 1,                    // Size of the particles
     velocity: 200,              // Initial particle velocity
     fade: false,                // Particles fall off the screen, or fade out
+    color: ["#FF06B5"]          // Palette the particles are picked from
 });
 ```
 
@@ -78,5 +79,16 @@ window.addEventListener("load", () => {
     for(let i = 0; i < positionList.length; i++) {
         setTimeout(() => confetti({ position: positionList[i] }), i * 250);
     }
+});
+```
+
+Match the confetti to your brand colors:
+
+```js
+window.addEventListener("click", (event) => {
+    confetti({
+        position: { x: event.clientX, y: event.clientY },
+        color: ["#F43F5E", "#8B5CF6", "#06B6D4"],
+    });
 });
 ```

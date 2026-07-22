@@ -45,4 +45,32 @@ describe('Config', () => {
             }
         });
     });
+
+    describe('color', () => {
+        it('is undefined when not provided', () => {
+            expect(Config.init({}).color).toBeUndefined();
+        });
+
+        it('passes through a palette of CSS color strings', () => {
+            const config = Config.init({ color: ['#ff0000', '#00ff00', '#0000ff'] });
+            expect(config.color).toEqual(['#ff0000', '#00ff00', '#0000ff']);
+        });
+
+        it('passes through a palette of hue numbers', () => {
+            const config = Config.init({ color: [0, 120, 240] });
+            expect(config.color).toEqual([0, 120, 240]);
+        });
+
+        it('passes through an empty palette', () => {
+            expect(Config.init({ color: [] }).color).toEqual([]);
+        });
+
+        it('does not disturb the other defaults', () => {
+            const config = Config.init({ color: [0, 120, 240] });
+            expect(config.count).toBe(75);
+            expect(config.size).toBe(1);
+            expect(config.velocity).toBe(200);
+            expect(config.fade).toBe(false);
+        });
+    });
 });

@@ -4,6 +4,7 @@ export interface ConfettiConfig {
     size: number;
     velocity: number;
     fade: boolean;
+    color?: string[] | number[];
 }
 
 const DEFAULT_CONFIG = {
