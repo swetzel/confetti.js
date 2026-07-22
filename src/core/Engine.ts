@@ -33,8 +33,9 @@ export default class Engine {
         this.renderer.clear();
 
         let write = 0;
+        const damping = Math.pow(0.98, delta * 60);
         for (let i = 0; i < this.particles.length; i++) {
-            this.particles[i].update(delta);
+            this.particles[i].update(delta, damping);
             if (!this.particles[i].cull(this.renderer)) {
                 this.particles[i].draw(this.renderer);
                 this.particles[write++] = this.particles[i];

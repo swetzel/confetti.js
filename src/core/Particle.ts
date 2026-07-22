@@ -47,11 +47,10 @@ export default class Particle {
         return direction;
     }
 
-    update(delta: number): void {
+    update(delta: number, damping: number): void {
         this.velocity.x += Random.range(-350, 350) * delta;
         this.velocity.y += 75 * this.size.y * delta;
 
-        const damping = Math.pow(0.98, delta * 60);
         this.velocity.scale(damping);
 
         this.position.x += this.velocity.x * delta;
